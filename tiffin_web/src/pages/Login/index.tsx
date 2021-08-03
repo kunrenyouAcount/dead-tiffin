@@ -13,6 +13,7 @@ export const Login: React.FC = () => {
   const pushLogin = async () => {
     const response = await Axios.post<AuthResponse>("auth/login", user);
     if (response.status == 200) {
+      //cookieにjwt認証に必要な情報を保存する
       document.cookie = `${tiffin_token_key}=${response.data.access_token}`;
       router.push("/");
     } else {
@@ -21,14 +22,12 @@ export const Login: React.FC = () => {
   };
 
   const changedEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //左側の引数に対して、右側の値をマージする
     const newUser = Object.assign({}, user);
     newUser.email = e.target.value;
     setUser(newUser);
   };
 
   const changedPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //左側の引数に対して、右側の値をマージする
     const newUser = Object.assign({}, user);
     newUser.password = e.target.value;
     setUser(newUser);
