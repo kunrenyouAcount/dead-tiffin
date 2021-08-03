@@ -4,7 +4,9 @@ import Axios from "axios";
 import "./styles.css";
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  //ベースとなるURLを設定
   Axios.defaults.baseURL = "http://localhost:4000/api/";
+  //許容するステータスコードを設定
   Axios.defaults.validateStatus = (status) =>
     (status >= 200 && status < 300) ||
     status == 400 ||
