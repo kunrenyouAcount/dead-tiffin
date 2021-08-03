@@ -18,12 +18,15 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+//ログインせずに見れるページ
 Route::group([
     'prefix' => 'auth'
 ], function () {
     Route::post('login', 'AuthController@login');
+    Route::post('register', 'AuthController@register');
 });
 
+//ログイン後に見れるページ
 Route::group([
     'prefix' => 'auth',
     'middleware' => 'auth:api'

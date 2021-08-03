@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Auth\AuthRegisterRequest;
+use App\Services\Auth\AuthRegisterService;
 
 class AuthController extends Controller
 {
@@ -13,7 +15,18 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', "register"]]);
+    }
+
+    public function register(AuthRegisterRequest $request)
+    {
+        $parameters = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+        $service = new AuthRegisterService();
+        $service->main($parameters);
     }
 
     /**
