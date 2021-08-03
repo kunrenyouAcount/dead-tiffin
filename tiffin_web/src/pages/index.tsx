@@ -18,7 +18,7 @@ export const Home: React.FC = () => {
           <button
             className="primaryButton"
             onClick={() => {
-              router.push("/");
+              router.push("/Register");
             }}
           >
             Register
