@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
   return (
     <div className={style.headerArea}>
       <div className={style.logo} onClick={() => router.push("/")}>
-        Todo
+        Tiffin
       </div>
       <div className={style.headerRightArea}>
         <button className={style.headerButton} onClick={goBack}>
